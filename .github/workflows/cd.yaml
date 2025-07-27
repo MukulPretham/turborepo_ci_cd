@@ -14,6 +14,11 @@ jobs:
         run: |
           echo "${{ secrets.SSH_KEY }}" > key.pem
           chmod 600 key.pem
+          echo "Key file size: $(wc -c < key.pem) bytes"
+          echo "First line of key:"
+          head -1 key.pem
+          echo "Last line of key:"
+          tail -1 key.pem
 
       - name: Deploy to Remote Server via SSH
         run: |
